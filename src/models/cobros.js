@@ -8,7 +8,6 @@ export class CobrosModel {
     findAll = () => {
         return new Promise((resolve, reject) => {
             const query = `SELECT 
- 
 n.fac_id as nota,
 n.not_importe as importe,
 c.cob_saldo_actual as pago ,
@@ -22,7 +21,7 @@ Plosa.cobros c ON n.fac_id = c.fac_id
 join plosa.facturas f on n.fac_id = f.fac_id and c.fac_id = f.fac_id
 join plosa.clientes cl on f.cli_numero = cl.cli_numero 
 HAVING res != 0
-LIMIT 10`;
+LIMIT 100`;
 
             connection.query(query, (err, result) => {
                 if (err) {
