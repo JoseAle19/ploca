@@ -3,10 +3,9 @@ import { FacturaModel } from "../models/factura.js";
 const cobros = new CobrosModel();
 const facturas = new FacturaModel();
 export const getCobros = async (req, res) => {
-  let data = [];
+  
   try {
-
-    const result = await cobros.findAll();
+    const result = await cobros.findAll(req.body);
 
     const groupedData = result.reduce((acc, obj) => {
       const key = `${obj.fac_id}_${obj["nombre cliente"]}`;
@@ -19,7 +18,7 @@ export const getCobros = async (req, res) => {
       }
       acc[key].cobros.push({
           importe: obj['importe'],
-          pago: obj['cob_saldo_actual'],
+          abono: obj['abono'],
           "KG pagados": obj['KG pagados']
       });
       return acc;

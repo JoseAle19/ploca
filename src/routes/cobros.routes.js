@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
     return res.json({ message: "cobros" });
 });
 
-router.get("/all", getCobros )
+router.post("/all", getCobros )
 
 
 export default router;
