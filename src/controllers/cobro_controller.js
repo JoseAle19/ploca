@@ -3,7 +3,7 @@ import { FacturaModel } from "../models/factura.js";
 const cobros = new CobrosModel();
 const facturas = new FacturaModel();
 export const getCobros = async (req, res) => {
-  
+
   try {
     const result = await cobros.findAll(req.body);
 
@@ -27,7 +27,10 @@ export const getCobros = async (req, res) => {
   // Convertir el objeto agrupado en un arreglo de objetos
   const transformedData = Object.values(groupedData);
 
-    res.json(transformedData);
+    res.json({
+      length: transformedData.length,
+      data: transformedData
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
