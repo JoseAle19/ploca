@@ -1,6 +1,6 @@
 import express from "express";
 import { connection } from "../config/db.js";
-import NotasRouter from "../routes/notas.routes.js";
+import CobrosRouter from "../routes/cobros.routes.js";
 
 export class ServerModel {
 
@@ -17,7 +17,7 @@ export class ServerModel {
 
 
     routes = () => {
-      this.app.use("/api/notas", NotasRouter);
+      this.app.use("/api/cobros", CobrosRouter);
     }
 
 
