@@ -21,7 +21,7 @@ Plosa.cobros c ON n.fac_id = c.fac_id
 join plosa.facturas f on n.fac_id = f.fac_id and c.fac_id = f.fac_id
 join plosa.clientes cl on f.cli_numero = cl.cli_numero 
 HAVING res != 0
-WHERE DATE(fecha) BETWEEN '${del}' AND ${al};
+WHERE DATE(c.fecha_cobro) BETWEEN '${del}' AND ${al};
 LIMIT 100`;
 
             connection.query(query, (err, result) => {
